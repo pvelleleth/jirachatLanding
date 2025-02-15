@@ -16,6 +16,30 @@
       font-family: 'Inter', sans-serif;
     }
 
+    @keyframes revealUp {
+      from {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+    }
+
+    .purple-bg-grad {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 10%;
+      height: 250px;
+      width: 700px;
+      background: linear-gradient(135deg, rgba(130, 163, 225, 0.3) 0%, rgba(0, 94, 255, 0.1) 100%);
+      filter: blur(60px);
+      animation: revealUp 1s ease-out forwards;
+      z-index: 0;
+    }
+
     body {
       background-color: #fff;
       color: #000;
@@ -24,6 +48,10 @@
       min-height: 100vh;
       /* Increase base font size slightly */
       font-size: 1.1rem;
+      background-color: #ffffff;
+      opacity: 1;
+      background-image:  linear-gradient(#fdfdfd 2.7px, transparent 2.7px), linear-gradient(to right, #fdfdfd 2.7px, #ffffff 2.7px);
+      background-size: 54px 54px;
     }
 
     /* Navigation Bar */
@@ -85,8 +113,13 @@
       padding: 2rem 2rem 1rem;
       text-align: center;
       background-color: #fff;
+      position: relative;
+      background-color: #ffffff;
+      opacity: 1;
+      background-image: linear-gradient(#fdfdfd 2.7px, transparent 2.7px), linear-gradient(to right, #fdfdfd 2.7px, #ffffff 2.7px);
+      background-size: 54px 54px;
     }
-
+    
     header h1 {
       /* Slightly larger hero heading */
       font-size: 2.7rem;
@@ -100,23 +133,49 @@
       max-width: 600px;
       margin: 0 auto 2rem;
       line-height: 1.8;
+      
     }
 
     .cta-button {
-      background-color: #2200FF;
+      background: linear-gradient(135deg, #2200FF 0%, #4D3AFF 100%);
       color: #fff;
       border: none;
       padding: 1rem 2rem;
       border-radius: 8px;
       font-weight: 500;
       cursor: pointer;
-      transition: background-color 0.3s, transform 0.2s;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(34, 0, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1a1a4f 0%, #2d1a6f 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
     }
 
     .cta-button:hover {
-      background-color: #1a00cc;
-      transform: scale(1.05);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(26, 26, 79, 0.4);
+    }
+
+    .cta-button:hover::before {
+      opacity: 1;
+    }
+
+    .cta-button:active {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(26, 26, 79, 0.3);
     }
 
     /* Main content area */
@@ -255,6 +314,7 @@
   
   <!-- Hero Section -->
   <header>
+    <div class="purple-bg-grad"></div>
     <h1>Your AI Copilot for Jira</h1>
     <p>Stop wasting time in Jira. Get answers and build actions in seconds with Jirachat.</p>
     <button class="cta-button" onclick="requestBeta()">Request Beta</button>
