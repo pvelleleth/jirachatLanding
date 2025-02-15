@@ -91,7 +91,7 @@
       /* Slightly larger hero heading */
       font-size: 2.7rem;
       margin-bottom: 1rem;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     header p {
@@ -99,7 +99,7 @@
       color: #333;
       max-width: 600px;
       margin: 0 auto 2rem;
-      line-height: 1.6;
+      line-height: 1.8;
     }
 
     .cta-button {
@@ -110,11 +110,13 @@
       border-radius: 8px;
       font-weight: 500;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .cta-button:hover {
       background-color: #1a00cc;
+      transform: scale(1.05);
     }
 
     /* Main content area */
@@ -250,7 +252,7 @@
       <a href="#login">Log in</a>
     </div>
   </nav>
-
+  
   <!-- Hero Section -->
   <header>
     <h1>Your AI Copilot for Jira</h1>
